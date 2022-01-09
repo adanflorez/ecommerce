@@ -3,11 +3,12 @@ import Product from 'src/app/core/model/product.model';
 import { GlobalService } from 'src/app/shared/services/global.service';
 
 @Component({
-  selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss'],
+  selector: 'app-products-page',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss']
 })
-export class PageComponent implements OnInit {
+export class ProductsPageComponent implements OnInit {
+
   products: Product[] = [];
 
   constructor(private globalService: GlobalService) {}
@@ -20,4 +21,5 @@ export class PageComponent implements OnInit {
       error: (err) => console.error(err),
     });
   }
+
 }
