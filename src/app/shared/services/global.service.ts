@@ -20,4 +20,8 @@ export class GlobalService {
     if (limit) params = params.set('limit', limit);
     return this.httpClient.get(`${baseURL}products`, { params });
   }
+
+  getProductById(id: string): Observable<any> {
+    return this.httpClient.get(`${baseURL}products/${id}`);
+  }
 }
