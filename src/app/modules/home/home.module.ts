@@ -4,6 +4,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { ProductsPageComponent } from './pages/products/products.component';
 import { ProductsModule } from 'src/app/shared/components/products/products.module';
 import { ProductsDetailPageComponent } from './pages/products-detail-page/products-detail-page.component';
+import { QuantityHandlerModule } from 'src/app/shared/components/quantity-handler/quantity-handler.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ProductsDetailPageComponent } from './pages/products-detail-page/produc
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ProductsModule
+    ProductsModule,
+    QuantityHandlerModule
   ]
 })
 export class HomeModule { }
