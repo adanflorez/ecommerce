@@ -1,0 +1,19 @@
+<div *ngIf="product" class="card border-secondary mb-3">
+  <div class="m-auto">
+    <img
+      height="200"
+      [src]="product.image"
+      class="p-4 mw-100"
+      [alt]="product.title"
+    />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <h6 class="card-subtitle text-muted">{{ product.category }}</h6>
+    <hr />
+    <div class="d-flex justify-content-between">
+      <h6 class="card-subtitle text-muted">${{ product.price }}</h6>
+      <h6 class="card-subtitle text-muted">{{ product.rating.rate }}</h6>
+    </div>
+  </div>
+</div>
