@@ -1,18 +1,25 @@
-
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageComponent } from './page/page.component';
+import { ProductsDetailPageComponent } from './pages/products-detail-page/products-detail-page.component';
+import { ProductsPageComponent } from './pages/products/products.component';
 
 const routes: Routes = [
   {
-    path: "",
-    component: PageComponent
-  }
+    path: '',
+    redirectTo: 'products',
+  },
+  {
+    path: 'products',
+    component: ProductsPageComponent,
+  },
+  {
+    path: 'product/:id',
+    component: ProductsDetailPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule { }
+export class HomeRoutingModule {}

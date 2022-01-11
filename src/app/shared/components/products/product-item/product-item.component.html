@@ -1,0 +1,36 @@
+<div *ngIf="product" class="card border-secondary mb-3">
+  <div class="m-auto">
+    <img
+      height="200"
+      defaultImage="assets/img/placeholder-image.jpeg"
+      [lazyLoad]="product.image"
+      class="p-4 mw-100"
+      [alt]="product.title"
+    />
+  </div>
+  <div class="card-body">
+    <h5
+      class="card-title text-truncate product-title"
+      [title]="product.title"
+      [routerLink]="['/product/' + product.id]"
+    >
+      {{ product.title }}
+    </h5>
+    <h6 class="card-subtitle text-muted">{{ product.category }}</h6>
+    <hr />
+    <div class="d-flex justify-content-between align-items-center">
+      <h6 class="card-subtitle text-muted my-auto">${{ product.price }}</h6>
+      <div class="d-flex align-items-center">
+        <i class="bi bi-star-fill text-warning me-1"></i>
+        <h6 class="card-subtitle text-muted my-auto">
+          {{ product.rating.rate }}
+        </h6>
+      </div>
+    </div>
+    <div class="d-grid gap-2 mt-3">
+      <button type="button" class="btn btn-primary">
+        <i class="bi bi-cart"></i> Agregar
+      </button>
+    </div>
+  </div>
+</div>
