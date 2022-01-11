@@ -8,7 +8,7 @@ import Product from 'src/app/core/model/product.model';
 })
 export class ProductsComponent implements OnInit {
   @Input() category: string = '';
-  @Input() products: Product[] = [];
+  @Input() products: ReadonlyArray<Product> | null = [];
 
   constructor() {}
 

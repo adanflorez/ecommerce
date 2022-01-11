@@ -1,6 +1,8 @@
-<app-products
-  class="m-4"
-  category="Los mas vendidos"
-  [products]="products"
-></app-products>
-
+<div *ngIf="loading$ | async; else productsDiv">Cargando...</div>
+<ng-template #productsDiv>
+  <app-products
+    class="m-4"
+    category="Los mas vendidos"
+    [products]="products$ | async"
+  ></app-products>
+</ng-template>
