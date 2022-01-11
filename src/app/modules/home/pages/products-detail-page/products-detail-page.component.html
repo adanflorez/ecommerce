@@ -22,7 +22,11 @@
       <p class="lead mb-4">{{ product.description }}</p>
       <div class="d-flex align-items-center">
         <app-quantity-handler class="me-3"></app-quantity-handler>
-        <button type="button" class="btn btn-outline-primary">
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="addItemToCart()"
+        >
           <i class="bi bi-cart me-2"></i>Agregar
         </button>
       </div>
