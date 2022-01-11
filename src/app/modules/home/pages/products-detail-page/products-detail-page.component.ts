@@ -50,7 +50,4 @@ export class ProductsDetailPageComponent implements OnInit {
     this.store.dispatch(addItemToCart({ item: cartItem }));
   }
 
-  private updateQuantity(actualQuantity: number): void {
-    this.quantity = actualQuantity;
-  }
 }
