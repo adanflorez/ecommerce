@@ -2,7 +2,8 @@
   <div class="m-auto">
     <img
       height="200"
-      [src]="product.image"
+      defaultImage="assets/img/placeholder-image.jpeg"
+      [lazyLoad]="product.image"
       class="p-4 mw-100"
       [alt]="product.title"
     />
