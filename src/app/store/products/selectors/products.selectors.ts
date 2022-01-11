@@ -13,3 +13,12 @@ export const selectProductsLoading = createSelector(
   selectProducts,
   (state: ProductState) => state.loading
 );
+
+export const selectProductsCartItemsQuantity = createSelector(
+  selectProducts,
+  (state: ProductState) => {
+    let actualQuantity = 0;
+    state.cart.forEach((item) => (actualQuantity += item.quantity));
+    return actualQuantity;
+  }
+);
