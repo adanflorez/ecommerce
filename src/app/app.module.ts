@@ -10,22 +10,23 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ROOT_REDUCERS } from './store/app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductsEffects } from './store/products/effects/products.effects';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainLayoutComponent
-  ],
+  declarations: [AppComponent, MainLayoutComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(ROOT_REDUCERS),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([ProductsEffects]),
   ],
-  providers: [
-    GlobalService
-  ],
-  bootstrap: [AppComponent]
+  providers: [GlobalService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
