@@ -7,9 +7,15 @@ import { ProductGridModule } from 'src/app/shared/components/product-grid/produc
 // Pages
 import { ProductsPageComponent } from './pages/products/products.component';
 import { ProductsDetailPageComponent } from './pages/products-detail-page/products-detail-page.component';
+import { ProductListModule } from 'src/app/shared/components/product-list/product-list.module';
 
 @NgModule({
   declarations: [ProductsPageComponent, ProductsDetailPageComponent],
-  imports: [CommonModule, HomeRoutingModule, ProductGridModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    ProductGridModule,
+    ProductListModule,
+  ],
 })
 export class HomeModule {}
