@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 // Routing module
 import { HomeRoutingModule } from './home-routing.module';
 // Custom modules
-import { ProductsModule } from 'src/app/shared/components/products/products.module';
+import { ProductGridModule } from 'src/app/shared/components/product-grid/product-grid.module';
 // Pages
 import { ProductsPageComponent } from './pages/products/products.component';
 import { ProductsDetailPageComponent } from './pages/products-detail-page/products-detail-page.component';
 
 @NgModule({
   declarations: [ProductsPageComponent, ProductsDetailPageComponent],
-  imports: [CommonModule, HomeRoutingModule, ProductsModule],
+  imports: [CommonModule, HomeRoutingModule, ProductGridModule],
 })
 export class HomeModule {}

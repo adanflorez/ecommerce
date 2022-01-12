@@ -1,8 +1,13 @@
-<div *ngIf="loading$ | async; else productsDiv">Cargando...</div>
-<ng-template #productsDiv>
-  <app-products
-    class="m-4"
-    category="Los mas vendidos"
-    [products]="products$ | async"
-  ></app-products>
-</ng-template>
+<div class="m-4">
+  <div *ngIf="loading$ | async; else productsDiv">Cargando...</div>
+  <ng-template #productsDiv>
+    <div class="container">
+      <h1>Los mas vendidos</h1>
+      <div class="row">
+        <div class="col-sm-3" *ngFor="let product of products$ | async">
+          <app-product-grid [product]="product"></app-product-grid>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
