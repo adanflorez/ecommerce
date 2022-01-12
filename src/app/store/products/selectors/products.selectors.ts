@@ -22,3 +22,9 @@ export const selectProductsCartItemsQuantity = createSelector(
     return actualQuantity;
   }
 );
+export const selectProductsCartItems = createSelector(
+  selectProducts,
+  (state: ProductState) => {
+    return state.cart;
+  }
+);

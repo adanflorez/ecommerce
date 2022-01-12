@@ -9,6 +9,8 @@ import { GlobalService } from 'src/app/shared/services/global.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
 import { addItemToCart } from 'src/app/store/products/actions/product.actions';
+import { Observable } from 'rxjs';
+import { selectProductsCartItems } from 'src/app/store/products/selectors/products.selectors';
 
 @Component({
   selector: 'app-products-detail-page',
@@ -18,6 +20,7 @@ import { addItemToCart } from 'src/app/store/products/actions/product.actions';
 export class ProductsDetailPageComponent implements OnInit {
   product: Product | undefined;
   quantity: number = 1;
+  cartItems$: Observable<ReadonlyArray<CartItem>> = new Observable();
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +35,7 @@ export class ProductsDetailPageComponent implements OnInit {
         this.getProductDetail(productId);
       }
     });
+    this.cartItems$ = this.store.select(selectProductsCartItems);
   }
 
   private getProductDetail(productId: string): void {
@@ -49,5 +53,4 @@ export class ProductsDetailPageComponent implements OnInit {
     };
     this.store.dispatch(addItemToCart({ item: cartItem }));
   }
-
 }
