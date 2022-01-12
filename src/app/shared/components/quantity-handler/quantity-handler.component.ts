@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-quantity-handler',
@@ -7,8 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class QuantityHandlerComponent implements OnInit {
   @Output() updateQuantity = new EventEmitter<number>();
-
-  quantity = 1;
+  @Input() quantity = 1;
 
   constructor() {}
 
