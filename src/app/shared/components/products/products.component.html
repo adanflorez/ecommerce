@@ -2,7 +2,7 @@
   <h1 *ngIf="category">{{ category }}</h1>
   <div class="row">
     <div class="col-sm-3" *ngFor="let product of products">
-      <app-product-item [product]="product"></app-product-item>
+      <app-product-grid [product]="product"></app-product-grid>
     </div>
   </div>
 </div>
