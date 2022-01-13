@@ -6,7 +6,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./quantity-handler.component.scss'],
 })
 export class QuantityHandlerComponent implements OnInit {
-  @Output() updateQuantity = new EventEmitter<number>();
+  @Output() decrementQuantity = new EventEmitter<any>();
+  @Output() incrementQuantity = new EventEmitter<any>();
   @Input() quantity = 1;
 
   constructor() {}
@@ -14,13 +15,10 @@ export class QuantityHandlerComponent implements OnInit {
   ngOnInit(): void {}
 
   public increment(): void {
-    this.quantity += 1;
-    this.updateQuantity.emit(this.quantity);
+    this.incrementQuantity.emit();
   }
 
   public decrement(): void {
-    if (this.quantity === 1) return;
-    this.quantity -= 1;
-    this.updateQuantity.emit(this.quantity);
+    this.decrementQuantity.emit();
   }
 }
