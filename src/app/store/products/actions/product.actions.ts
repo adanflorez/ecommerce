@@ -3,6 +3,7 @@ import CartItem from 'src/app/core/model/cart-item.model';
 import Product from 'src/app/core/model/product.model';
 import {
   ADD_ITEM_TO_CART,
+  INCREMENT_ITEM_QUANTITY,
   LOAD_PRODUCTS,
   LOAD_PRODUCTS_SUCCESS,
 } from '../types';
@@ -17,4 +18,9 @@ export const loadProductsSuccess = createAction(
 export const addItemToCart = createAction(
   ADD_ITEM_TO_CART,
   props<{ item: CartItem }>()
+);
+
+export const incrementItemQuantity = createAction(
+  INCREMENT_ITEM_QUANTITY,
+  props<{ product: Product }>()
 );

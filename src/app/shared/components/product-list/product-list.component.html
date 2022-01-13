@@ -14,5 +14,8 @@
       </span>
     </div>
   </div>
-  <app-quantity-handler [quantity]="cartItem.quantity"></app-quantity-handler>
+  <app-quantity-handler
+    (incrementQuantity)="increment()"
+    [quantity]="cartItem.quantity"
+  ></app-quantity-handler>
 </div>
