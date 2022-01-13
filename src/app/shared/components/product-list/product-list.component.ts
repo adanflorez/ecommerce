@@ -1,8 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+// Models
 import CartItem from 'src/app/core/model/cart-item.model';
+// Store
+import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import { incrementItemQuantity } from 'src/app/store/products/actions/product.actions';
+import {
+  decrementItemQuantity,
+  incrementItemQuantity,
+} from 'src/app/store/products/actions/product.actions';
 
 @Component({
   selector: 'app-product-list',
@@ -19,6 +24,12 @@ export class ProductListComponent implements OnInit {
   public increment(): void {
     this.store.dispatch(
       incrementItemQuantity({ product: this.cartItem!.product })
+    );
+  }
+
+  public decrement(): void {
+    this.store.dispatch(
+      decrementItemQuantity({ product: this.cartItem!.product })
     );
   }
 }

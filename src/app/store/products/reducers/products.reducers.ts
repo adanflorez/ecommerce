@@ -3,6 +3,7 @@ import CartItem from 'src/app/core/model/cart-item.model';
 import Product from 'src/app/core/model/product.model';
 import {
   addItemToCart,
+  decrementItemQuantity,
   incrementItemQuantity,
   loadProducts,
   loadProductsSuccess,
@@ -45,7 +46,14 @@ export const productsReducer = createReducer(
   on(incrementItemQuantity, (state, { product }) => {
     const index = state.cart.findIndex((el) => el.product.id === product.id);
     if (index > -1) {
-      state.cart[index].quantity = state.cart[index].quantity + 1;
+      state.cart[index].quantity += 1;
+    }
+    return { ...state };
+  }),
+  on(decrementItemQuantity, (state, { product }) => {
+    const index = state.cart.findIndex((el) => el.product.id === product.id);
+    if (index > -1) {
+      state.cart[index].quantity -= 1;
     }
     return { ...state };
   })
