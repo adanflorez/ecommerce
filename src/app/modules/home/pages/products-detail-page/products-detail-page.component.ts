@@ -19,7 +19,6 @@ import { selectProductsCartItems } from 'src/app/store/products/selectors/produc
 })
 export class ProductsDetailPageComponent implements OnInit {
   product: Product | undefined;
-  quantity: number = 1;
   cartItems$: Observable<CartItem[]> = new Observable();
 
   constructor(
@@ -49,7 +48,7 @@ export class ProductsDetailPageComponent implements OnInit {
   public addItemToCart() {
     const cartItem: CartItem = {
       product: this.product!,
-      quantity: this.quantity,
+      quantity: 1,
     };
     this.store.dispatch(addItemToCart({ item: cartItem }));
   }
