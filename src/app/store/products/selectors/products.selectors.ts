@@ -22,9 +22,21 @@ export const selectProductsCartItemsQuantity = createSelector(
     return actualQuantity;
   }
 );
+
 export const selectProductsCartItems = createSelector(
   selectProducts,
   (state: ProductState) => {
     return state.cart;
+  }
+);
+
+export const selectProductsTotalPrice = createSelector(
+  selectProducts,
+  (state: ProductState) => {
+    let totalPrice = 0;
+    state.cart.map((item) => {
+      totalPrice += item.product.price * item.quantity;
+    });
+    return totalPrice;
   }
 );
