@@ -12,6 +12,8 @@ import { addItemToCart } from 'src/app/store/products/actions/product.actions';
 import { Observable } from 'rxjs';
 import { selectProductsCartItems } from 'src/app/store/products/selectors/products.selectors';
 
+import * as bootstrap from 'bootstrap';
+
 @Component({
   selector: 'app-products-detail-page',
   templateUrl: './products-detail-page.component.html',
@@ -21,6 +23,7 @@ export class ProductsDetailPageComponent implements OnInit {
   product: Product | undefined;
   cartItems$: Observable<CartItem[]> = new Observable();
 
+  cartItemsModal: bootstrap.Modal | undefined;
   constructor(
     private route: ActivatedRoute,
     private globalService: GlobalService,
@@ -45,11 +48,19 @@ export class ProductsDetailPageComponent implements OnInit {
     });
   }
 
-  public addItemToCart() {
+  public addItemToCart(element: any) {
+    this.cartItemsModal = new bootstrap.Modal(element, {
+      keyboard: false,
+    });
+    this.cartItemsModal?.show();
     const cartItem: CartItem = {
       product: this.product!,
       quantity: 1,
     };
     this.store.dispatch(addItemToCart({ item: cartItem }));
+  }
+
+  public closeModal() {
+    this.cartItemsModal?.hide();
   }
 }
