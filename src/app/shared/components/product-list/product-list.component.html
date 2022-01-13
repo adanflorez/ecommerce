@@ -14,9 +14,21 @@
       </span>
     </div>
   </div>
-  <app-quantity-handler
-    (incrementQuantity)="increment()"
-    (decrementQuantity)="decrement()"
-    [quantity]="cartItem.quantity"
-  ></app-quantity-handler>
+  <div class="d-flex">
+    <app-quantity-handler
+      class="me-2"
+      (incrementQuantity)="increment()"
+      (decrementQuantity)="decrement()"
+      [quantity]="cartItem.quantity"
+    ></app-quantity-handler>
+    <div>
+      <button
+        type="button"
+        class="btn btn-danger btn-sm"
+        (click)="removeItem()"
+      >
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
+  </div>
 </div>

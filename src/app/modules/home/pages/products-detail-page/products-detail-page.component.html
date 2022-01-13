@@ -57,9 +57,14 @@
         ></button>
       </div>
       <div class="modal-body">
-        <div *ngFor="let item of cartItems$ | async">
-          <app-product-list [cartItem]="item"></app-product-list>
+        <div *ngIf="(cartItems$ | async)?.length; else emptyMessage">
+          <div *ngFor="let item of cartItems$ | async">
+            <app-product-list [cartItem]="item"></app-product-list>
+          </div>
         </div>
+        <ng-template #emptyMessage>
+          No hay productos en el carrito
+        </ng-template>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">

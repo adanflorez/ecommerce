@@ -7,6 +7,7 @@ import {
   incrementItemQuantity,
   loadProducts,
   loadProductsSuccess,
+  removeItemFromCart,
 } from '../actions/product.actions';
 
 export interface ProductState {
@@ -56,5 +57,9 @@ export const productsReducer = createReducer(
       state.cart[index].quantity -= 1;
     }
     return { ...state };
+  }),
+  on(removeItemFromCart, (state, { product }) => {
+    const items = state.cart.filter((el) => el.product.id !== product.id);
+    return { ...state, cart: [...items] };
   })
 );

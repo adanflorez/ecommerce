@@ -7,6 +7,7 @@ import {
   INCREMENT_ITEM_QUANTITY,
   LOAD_PRODUCTS,
   LOAD_PRODUCTS_SUCCESS,
+  REMOVE_ITEM_FROM_CART,
 } from '../types';
 
 export const loadProducts = createAction(LOAD_PRODUCTS);
@@ -28,5 +29,10 @@ export const incrementItemQuantity = createAction(
 
 export const decrementItemQuantity = createAction(
   DECREMENT_ITEM_QUANTITY,
+  props<{ product: Product }>()
+);
+
+export const removeItemFromCart = createAction(
+  REMOVE_ITEM_FROM_CART,
   props<{ product: Product }>()
 );

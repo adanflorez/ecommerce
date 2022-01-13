@@ -7,6 +7,7 @@ import { AppState } from 'src/app/store/app.state';
 import {
   decrementItemQuantity,
   incrementItemQuantity,
+  removeItemFromCart,
 } from 'src/app/store/products/actions/product.actions';
 
 @Component({
@@ -30,6 +31,12 @@ export class ProductListComponent implements OnInit {
   public decrement(): void {
     this.store.dispatch(
       decrementItemQuantity({ product: this.cartItem!.product })
+    );
+  }
+
+  public removeItem(): void {
+    this.store.dispatch(
+      removeItemFromCart({ product: this.cartItem!.product })
     );
   }
 }
