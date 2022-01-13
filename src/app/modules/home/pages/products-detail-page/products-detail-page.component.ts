@@ -20,7 +20,7 @@ import { selectProductsCartItems } from 'src/app/store/products/selectors/produc
 export class ProductsDetailPageComponent implements OnInit {
   product: Product | undefined;
   quantity: number = 1;
-  cartItems$: Observable<ReadonlyArray<CartItem>> = new Observable();
+  cartItems$: Observable<CartItem[]> = new Observable();
 
   constructor(
     private route: ActivatedRoute,

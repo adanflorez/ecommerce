@@ -16,7 +16,7 @@ import {
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsPageComponent implements OnInit {
-  products$: Observable<ReadonlyArray<Product>> = new Observable();
+  products$: Observable<Product[]> = new Observable();
   loading$: Observable<boolean> = new Observable();
 
   constructor(private store: Store<AppState>) {}
