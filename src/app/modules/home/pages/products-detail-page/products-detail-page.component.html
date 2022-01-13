@@ -1,6 +1,6 @@
 <div *ngIf="product" class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
       <div class="d-flex justify-content-center">
         <img
           class="mh-50 mw-100 px-4"
@@ -9,7 +9,7 @@
         />
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <h2 class="mb-4">
         {{ product.title }}
       </h2>
@@ -21,10 +21,50 @@
 
       <p class="lead mb-4">{{ product.description }}</p>
       <div class="d-flex align-items-center">
-        <app-quantity-handler class="me-3"></app-quantity-handler>
-        <button type="button" class="btn btn-outline-primary">
-          <i class="bi bi-cart me-2"></i>Agregar
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="addItemToCart(cartItemsModal)"
+        >
+          <i class="bi bi-cart me-2"></i>Agregar al carrito
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="cartItemsModal"
+  tabindex="-1"
+  aria-labelledby="cartItemsModalLabel"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  #cartItemsModal
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartItemsModalLabel">
+          Productos agregados al carrito
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-cart-list [items]="cartItems$ | async"></app-cart-list>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Cerrar
+        </button>
+        <button type="button" class="btn btn-primary">Ir al checkout</button>
       </div>
     </div>
   </div>

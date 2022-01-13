@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsComponent } from './products.component';
-import { ProductItemComponent } from './product-item/product-item.component';
 import { RouterModule } from '@angular/router';
+// Custom components
+import { ProductGridComponent } from './product-grid.component';
+// Custom modules
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductItemComponent],
+  declarations: [ProductGridComponent],
   imports: [CommonModule, RouterModule, LazyLoadImageModule],
-  exports: [ProductsComponent],
+  exports: [ProductGridComponent],
 })
-export class ProductsModule {}
+export class ProductGridModule {}

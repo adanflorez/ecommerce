@@ -1,0 +1,34 @@
+<div *ngIf="cartItem" class="d-flex justify-content-between py-2">
+  <div class="d-flex align-items-center">
+    <img
+      height="50"
+      defaultImage="assets/img/placeholder-image.jpeg"
+      [lazyLoad]="cartItem.product.image"
+      [alt]="cartItem.product.title"
+      class="mw-100"
+    />
+    <div class="mx-3">
+      <h6 class="mb-0">{{ cartItem.product.title }}</h6>
+      <span class="text-muted">
+        <small>${{ cartItem.product.price }}</small>
+      </span>
+    </div>
+  </div>
+  <div class="d-flex">
+    <app-quantity-handler
+      class="me-2"
+      (incrementQuantity)="increment()"
+      (decrementQuantity)="decrement()"
+      [quantity]="cartItem.quantity"
+    ></app-quantity-handler>
+    <div>
+      <button
+        type="button"
+        class="btn btn-danger btn-sm"
+        (click)="removeItem()"
+      >
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
+  </div>
+</div>

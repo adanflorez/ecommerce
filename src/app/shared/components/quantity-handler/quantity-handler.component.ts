@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-quantity-handler',
@@ -6,18 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quantity-handler.component.scss'],
 })
 export class QuantityHandlerComponent implements OnInit {
-  quantity = 1;
+  @Output() decrementQuantity = new EventEmitter<any>();
+  @Output() incrementQuantity = new EventEmitter<any>();
+  @Input() quantity = 1;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   public increment(): void {
-    this.quantity += 1;
+    this.incrementQuantity.emit();
   }
 
   public decrement(): void {
-    if (this.quantity === 1) return;
-    this.quantity -= 1;
+    this.decrementQuantity.emit();
   }
 }
