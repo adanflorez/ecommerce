@@ -1,20 +1,22 @@
 <div class="container-fluid bg-dark" style="height: 48px">
   <div class="d-flex align-items-center justify-content-end my-0">
-    <div class="d-flex">
-      <i class="bi bi-cart text-white"></i>
-      <div
-        class="
-          d-flex
-          align-items-center
-          justify-content-center
-          rounded-circle
-          bg-white
-          items-quantity
-        "
-      >
-        <span>{{ itemsInCartQuantity$ | async }}</span>
+    <a routerLink="/cart" class="text-decoration-none">
+      <div class="d-flex">
+        <i class="bi bi-cart text-white"></i>
+        <div
+          class="
+            d-flex
+            align-items-center
+            justify-content-center
+            rounded-circle
+            bg-white
+            items-quantity
+          "
+        >
+          <span>{{ itemsInCartQuantity$ | async }}</span>
+        </div>
       </div>
-    </div>
+    </a>
     <button type="button" class="btn btn-link text-white">
       Iniciar sesión
     </button>
