@@ -63,7 +63,17 @@
         <app-cart-list [items]="cartItems$ | async"></app-cart-list>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Ir al checkout</button>
+        <button type="button" class="btn btn-outline-primary">
+          <i class="bi bi-card-checklist me-2"></i>check out
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          routerLink="/cart"
+        >
+          <i class="bi bi-cart me-2"></i>ver carrito
+        </button>
       </div>
     </div>
   </div>
