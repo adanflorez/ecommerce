@@ -15,6 +15,7 @@ import {
 } from 'src/app/store/products/actions/product.actions';
 // Models
 import CartItem from 'src/app/core/model/cart-item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-page',
@@ -29,7 +30,8 @@ export class CartPageComponent implements OnInit {
 
   constructor(
     private store: Store<AppState>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -58,5 +60,6 @@ export class CartPageComponent implements OnInit {
 
   public onSubmit() {
     console.log('enviando...');
+    this.router.navigate(['/checkout']);
   }
 }
