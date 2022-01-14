@@ -24,7 +24,9 @@
         <button
           type="button"
           class="btn btn-outline-primary"
-          (click)="addItemToCart(cartItemsModal)"
+          data-bs-toggle="modal"
+          data-bs-target="#cartItemsModal"
+          (click)="addItemToCart()"
         >
           <i class="bi bi-cart me-2"></i>Agregar al carrito
         </button>
@@ -53,17 +55,14 @@
         <button
           type="button"
           class="btn-close"
+          data-bs-dismiss="modal"
           aria-label="Close"
-          (click)="closeModal()"
         ></button>
       </div>
       <div class="modal-body">
         <app-cart-list [items]="cartItems$ | async"></app-cart-list>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">
-          Cerrar
-        </button>
         <button type="button" class="btn btn-primary">Ir al checkout</button>
       </div>
     </div>
