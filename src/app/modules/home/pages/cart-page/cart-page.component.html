@@ -1,1 +1,112 @@
-<p>cart-page works!</p>
+<div class="my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-8">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Precio unidad</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems$ | async">
+                <td>
+                  <div class="d-flex">
+                    <img
+                      height="50"
+                      class="mw-100 me-3"
+                      [src]="item.product.image"
+                      [alt]="item.product.title"
+                    />
+                    <p>
+                      <small>{{ item.product.title }}</small>
+                    </p>
+                  </div>
+                </td>
+                <td>${{ item.product.price | number: "1.2-2" }}</td>
+                <td>
+                  <div class="d-flex">
+                    <app-quantity-handler
+                      class="me-2"
+                      (decrementQuantity)="decrement(item)"
+                      (incrementQuantity)="increment(item)"
+                      [quantity]="item.quantity"
+                    ></app-quantity-handler>
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm"
+                      (click)="removeItem(item)"
+                    >
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-between">
+                    $
+                    <div>
+                      {{ item.product.price * item.quantity | number: "1.2-2" }}
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card border-dark mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">Resumen de pedido</h5>
+          </div>
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0">Subtotal</h6>
+              <span>${{ totalPrice$ | async | number: "1.2-2" }}</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0">Impuestos</h6>
+              <span>$0</span>
+            </div>
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h6 class="mb-0">Descuentos</h6>
+              <span>$0</span>
+            </div>
+            <hr />
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="mb-0">Total</h5>
+              <span>${{ totalPrice$ | async | number: "1.2-2" }}</span>
+            </div>
+            <hr />
+            <div class="form-check mt-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="acceptTermsAndConditions"
+                [checked]
+              />
+              <label class="form-check-label" for="acceptTermsAndConditions">
+                <p>
+                  <small
+                    >Estoy de acuerdo con
+                    <a href="#">los terminos y condiciones</a></small
+                  >
+                </p>
+              </label>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-primary my-2">
+                finalizar compra
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

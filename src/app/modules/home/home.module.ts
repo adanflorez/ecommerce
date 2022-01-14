@@ -10,6 +10,7 @@ import { ProductsDetailPageComponent } from './pages/products-detail-page/produc
 import { ProductListModule } from 'src/app/shared/components/product-list/product-list.module';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { QuantityHandlerModule } from 'src/app/shared/components/quantity-handler/quantity-handler.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CartPageComponent } from './pages/cart-page/cart-page.component';
     HomeRoutingModule,
     ProductGridModule,
     ProductListModule,
+    QuantityHandlerModule
   ],
 })
 export class HomeModule {}
