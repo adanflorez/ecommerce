@@ -82,28 +82,32 @@
               <span>${{ totalPrice$ | async | number: "1.2-2" }}</span>
             </div>
             <hr />
-            <div class="form-check mt-4">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="acceptTermsAndConditions"
-                [checked]
-              />
-              <label class="form-check-label" for="acceptTermsAndConditions">
-                <p>
-                  <small
-                    >Estoy de acuerdo con
-                    <a href="#">los terminos y condiciones</a></small
-                  >
-                </p>
-              </label>
-            </div>
-            <div class="d-grid gap-2">
-              <button type="button" class="btn btn-primary my-2">
-                finalizar compra
-              </button>
-            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="form-check mt-4">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="acceptTerms"
+                  formControlName="acceptTerms"
+                />
+                <label class="form-check-label" for="acceptTerms">
+                  <p>
+                    <small
+                      >Estoy de acuerdo con
+                      <a href="#">los terminos y condiciones</a></small
+                    >
+                  </p>
+                </label>
+              </div>
+              <div class="d-grid gap-2">
+                <button
+                  [disabled]="!form.value.acceptTerms"
+                  class="btn btn-primary my-2"
+                >
+                  finalizar compra
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

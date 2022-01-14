@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Store
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.state';
-import { selectProductsCartItems, selectProductsTotalPrice } from 'src/app/store/products/selectors/products.selectors';
+import {
+  selectProductsCartItems,
+  selectProductsTotalPrice,
+} from 'src/app/store/products/selectors/products.selectors';
 import {
   decrementItemQuantity,
   incrementItemQuantity,
@@ -21,9 +25,15 @@ export class CartPageComponent implements OnInit {
   cartItems$: Observable<CartItem[]> = new Observable();
   totalPrice$: Observable<number> = new Observable();
 
-  constructor(private store: Store<AppState>) {}
+  form!: FormGroup;
+
+  constructor(
+    private store: Store<AppState>,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.initForm();
     this.cartItems$ = this.store.select(selectProductsCartItems);
     this.totalPrice$ = this.store.select(selectProductsTotalPrice);
   }
@@ -38,5 +48,15 @@ export class CartPageComponent implements OnInit {
 
   public removeItem(item: CartItem): void {
     this.store.dispatch(removeItemFromCart({ product: item.product }));
+  }
+
+  private initForm(): void {
+    this.form = this.formBuilder.group({
+      acceptTerms: [false, Validators.requiredTrue],
+    });
+  }
+
+  public onSubmit() {
+    console.log('enviando...');
   }
 }

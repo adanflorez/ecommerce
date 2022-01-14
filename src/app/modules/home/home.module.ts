@@ -11,6 +11,7 @@ import { ProductListModule } from 'src/app/shared/components/product-list/produc
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { QuantityHandlerModule } from 'src/app/shared/components/quantity-handler/quantity-handler.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { QuantityHandlerModule } from 'src/app/shared/components/quantity-handle
     HomeRoutingModule,
     ProductGridModule,
     ProductListModule,
-    QuantityHandlerModule
+    QuantityHandlerModule,
+    ReactiveFormsModule
   ],
 })
 export class HomeModule {}
