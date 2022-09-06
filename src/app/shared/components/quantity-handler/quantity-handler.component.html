@@ -1,0 +1,19 @@
+<div class="input-group">
+  <button
+    class="btn btn-primary btn-sm"
+    type="button"
+    (click)="decrement()"
+    [disabled]="quantity === 1"
+  >
+    -
+  </button>
+  <input
+    disabled
+    type="text"
+    class="form-control form-control-sm text-center"
+    [value]="quantity"
+  />
+  <button class="btn btn-primary btn-sm" type="button" (click)="increment()">
+    +
+  </button>
+</div>
